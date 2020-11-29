@@ -12,6 +12,7 @@
 * start manipulate Freeze-Frame-Validator data
 
 #### Technologies
+* nodejs as server
 * 'inversify' server for the api
 * typeorm for the entity
 * db is as json
