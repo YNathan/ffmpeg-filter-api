@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "184a45dd-975c-4571-b8a9-7fc735930968",
+		"name": "dis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMjYzZWMwMzAtMjY4My0xMWViLTllNzQtOTUyYzFkOTJjZTgwIiwibmFtZSI6ImphY29iIiwiZW1haWwiOiJqYWNvYkBkaXNjb3VudC5jb20ifSwiaWF0IjoxNjA1MzY0NTkyLCJleHAiOjE2MDU5NjkzOTJ9.pnLtiX8wnj6R8gtNO1erx9BAP9m5uzfNFVCOE4PaUak",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:3000/customer?id=319908e0-2689-11eb-9abf-0badc508fed7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "319908e0-2689-11eb-9abf-0badc508fed7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jacob@discount.com\",\n    \"password\": \"123!\",\n    \"name\": \"jacob\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:3000/user/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "user  login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"email\": \"jacob@discount.com\",\n       \"password\": \"123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:3000/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user change password",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "getAllCustomer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMjYzZWMwMzAtMjY4My0xMWViLTllNzQtOTUyYzFkOTJjZTgwIiwibmFtZSI6ImphY29iIiwiZW1haWwiOiJqYWNvYkBkaXNjb3VudC5jb20ifSwiaWF0IjoxNjA1MzY0NTkyLCJleHAiOjE2MDU5NjkzOTJ9.pnLtiX8wnj6R8gtNO1erx9BAP9m5uzfNFVCOE4PaUak",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:3000/customer/all",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMjYzZWMwMzAtMjY4My0xMWViLTllNzQtOTUyYzFkOTJjZTgwIiwibmFtZSI6ImphY29iIiwiZW1haWwiOiJqYWNvYkBkaXNjb3VudC5jb20ifSwiaWF0IjoxNjA1MzY0NTkyLCJleHAiOjE2MDU5NjkzOTJ9.pnLtiX8wnj6R8gtNO1erx9BAP9m5uzfNFVCOE4PaUak",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n  {\n    \"clientBank\": \"Discount\",\n    \"clientID\": \"AI_JacobFintech-AI_TestFintech_U1\",\n    \"consentID\": \"000000341\",\n    \"customerID\": \"Yaacov-222210023\",\n    \"customerPassport\": \"\",\n    \"consentTrack\": \"BankOffered\",\n    \"consentStatus\": \"valid\",\n    \"activationStatus\": \"Activated\",\n    \"customerSite\": \"Retail\",\n    \"consentReusability\": \"Recurring\",\n    \"acceptedDate\": \"2020-09-30\",\n    \"confirmationTimestamp\": \"2020-09-30T11:04:53\",\n    \"validFrom\": \"2020-09-30\",\n    \"validUntil\": \"2020-12-31\",\n    \"modificationTimestamp\": \"2020-09-30T11:04:03\",\n    \"cancellationTimestamp\": \"0001-01-01T00:00:00\",\n    \"cancellationReason\": \"\",\n    \"cancellationInitiator\": \"\",\n    \"frequencyPerDay\": 1,\n    \"accountPermissions\": [\n      {\n        \"scope\": \"balances\",\n        \"accountNumberIBAN\": \"IL540110920000153498542\",\n        \"openingBranch\": \"0002\",\n        \"accountNumber\": \"0153498732\",\n        \"productCode\": \"CACC\",\n        \"currencyCode\": \"\",\n        \"accountStatus\": \"Active\",\n        \"managingBranch\": \"0092\"\n      },\n      {\n        \"scope\": \"transactions\",\n        \"accountNumberIBAN\": \"IL54011092000015542732\",\n        \"openingBranch\": \"0092\",\n        \"accountNumber\": \"0153498732\",\n        \"productCode\": \"CACC\",\n        \"currencyCode\": \"\",\n        \"accountStatus\": \"Terminated\",\n        \"managingBranch\": \"0092\"\n      }\n    ]\n  }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:3000/customer/create",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"create"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one cutomer ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMjYzZWMwMzAtMjY4My0xMWViLTllNzQtOTUyYzFkOTJjZTgwIiwibmFtZSI6ImphY29iIiwiZW1haWwiOiJqYWNvYkBkaXNjb3VudC5jb20ifSwiaWF0IjoxNjA1MzY0NTkyLCJleHAiOjE2MDU5NjkzOTJ9.pnLtiX8wnj6R8gtNO1erx9BAP9m5uzfNFVCOE4PaUak",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:3000/customer/one/Israeli-222210023",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"one",
+								"Israeli-222210023"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMjYzZWMwMzAtMjY4My0xMWViLTllNzQtOTUyYzFkOTJjZTgwIiwibmFtZSI6ImphY29iIiwiZW1haWwiOiJqYWNvYkBkaXNjb3VudC5jb20ifSwiaWF0IjoxNjA1MzY0NTkyLCJleHAiOjE2MDU5NjkzOTJ9.pnLtiX8wnj6R8gtNO1erx9BAP9m5uzfNFVCOE4PaUak",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:3000/customer/Yaacov-222210023",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"Yaacov-222210023"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMjYzZWMwMzAtMjY4My0xMWViLTllNzQtOTUyYzFkOTJjZTgwIiwibmFtZSI6ImphY29iIiwiZW1haWwiOiJqYWNvYkBkaXNjb3VudC5jb20ifSwiaWF0IjoxNjA1MzY0NTkyLCJleHAiOjE2MDU5NjkzOTJ9.pnLtiX8wnj6R8gtNO1erx9BAP9m5uzfNFVCOE4PaUak",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n  {\n    \"clientBank\": \"Discount\",\n    \"clientID\": \"updated_client_id_Fintech_U1\",\n    \"consentID\": \"000000341\",\n    \"customerID\": \"Yaacov-222210023\",\n    \"customerPassport\": \"\",\n    \"consentTrack\": \"BankOffered\",\n    \"consentStatus\": \"valid\",\n    \"activationStatus\": \"Activated\",\n    \"customerSite\": \"Retail\",\n    \"consentReusability\": \"Recurring\",\n    \"acceptedDate\": \"2020-09-30\",\n    \"confirmationTimestamp\": \"2020-09-30T11:04:53\",\n    \"validFrom\": \"2020-09-30\",\n    \"validUntil\": \"2020-12-31\",\n    \"modificationTimestamp\": \"2020-09-30T11:04:03\",\n    \"cancellationTimestamp\": \"0001-01-01T00:00:00\",\n    \"cancellationReason\": \"\",\n    \"cancellationInitiator\": \"\",\n    \"frequencyPerDay\": 1,\n    \"accountPermissions\": [\n      {\n        \"scope\": \"balances\",\n        \"accountNumberIBAN\": \"IL540110920000153498542\",\n        \"openingBranch\": \"0002\",\n        \"accountNumber\": \"0153498732\",\n        \"productCode\": \"CACC\",\n        \"currencyCode\": \"\",\n        \"accountStatus\": \"Active\",\n        \"managingBranch\": \"0092\"\n      },\n      {\n        \"scope\": \"transactions\",\n        \"accountNumberIBAN\": \"IL54011092000015542732\",\n        \"openingBranch\": \"0092\",\n        \"accountNumber\": \"0153498732\",\n        \"productCode\": \"CACC\",\n        \"currencyCode\": \"\",\n        \"accountStatus\": \"Terminated\",\n        \"managingBranch\": \"0092\"\n      }\n    ]\n  }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:3000/customer/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3000/api-docs/swagger",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api-docs",
+						"swagger"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

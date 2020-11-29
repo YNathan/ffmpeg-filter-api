@@ -1,0 +1,10 @@
+import "./auth/login-response.dto";
+import "./user/user.dto";
+import "./auth/password-change-response.dto";
+import "./auth/password-change-request.dto";
+import "./auth/login-request.dto";
+import "./user/register-request.dto";
+import "./user/register-response.dto";
+import "./auth/token-valid-request.dto";
+import "./auth/token-valid-response.dto";
+import "./error/error-response.dto";
