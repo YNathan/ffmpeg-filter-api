@@ -46,55 +46,55 @@ export class VideoServiceImpl implements VideoService {
 
                     const filterResultDurationBuffer = readFileSync(`/tmp/${fileName.split('.')[0]}-duration.txt`);
                     const filterResultDurationText = filterResultDurationBuffer.toString('utf-8');
-                    const currentVideoDuratuionAsArray = this.getValuesBetweenTexts(filterResultDurationText, 'Duration: ', ', start');
-                    console.log(`current duration ${currentVideoDuratuionAsArray}`);
-                    const durationAsDateFildes = currentVideoDuratuionAsArray[0].split(':');
-                    const videoTotalDurationSeconds = (+durationAsDateFildes[0]) * 60 * 60 + (+durationAsDateFildes[1]) * 60 + (+durationAsDateFildes[2]);
+                    const currentVideoDurationAsArray = this.getValuesBetweenTexts(filterResultDurationText, 'Duration: ', ', start');
+                    console.log(`current duration ${currentVideoDurationAsArray}`);
+                    const durationAsDateFields = currentVideoDurationAsArray[0].split(':');
+                    const videoTotalDurationSeconds = (+durationAsDateFields[0]) * 60 * 60 + (+durationAsDateFields[1]) * 60 + (+durationAsDateFields[2]);
                     console.log(`total seconds ${videoTotalDurationSeconds}`);
 
 
                     const freeze_starts = this.getValuesBetweenTexts(filterResultText, 'lavfi.freezedetect.freeze_start=', '\n');
                     const freeze_ends = this.getValuesBetweenTexts(filterResultText, 'lavfi.freezedetect.freeze_end=', '\n');
                     const freeze_durations = this.getValuesBetweenTexts(filterResultText, 'lavfi.freezedetect.freeze_duration=', '\n');
-                    let longestPeriodFreezed = 0;
+                    let longestPeriodFroze = 0;
                     const pointArr = [[0]];
                     let validityDuration = 0;
-                    
-                    let currentCheckSync = true;
-                    for (const currentFreezIndex in freeze_starts) {
 
-                        const currentFreezStart = parseFloat(freeze_starts[currentFreezIndex]);
-                        const currentFreezEnd = parseFloat(freeze_ends[currentFreezIndex]);
-                        const currentFreezeDuration = parseFloat(freeze_durations[currentFreezIndex]);
+                    let currentCheckSync = true;
+                    for (const currentFrozIndex in freeze_starts) {
+
+                        const currentFreezeStart = parseFloat(freeze_starts[currentFrozIndex]);
+                        const currentFreezeEnd = parseFloat(freeze_ends[currentFrozIndex]);
+                        const currentFreezeeDuration = parseFloat(freeze_durations[currentFrozIndex]);
 
                         // longest freezed
-                        if (currentFreezeDuration > longestPeriodFreezed) {
-                            longestPeriodFreezed = currentFreezeDuration;
+                        if (currentFreezeeDuration > longestPeriodFroze) {
+                            longestPeriodFroze = currentFreezeeDuration;
                         }
 
-                        const currentStart = pointArr[currentFreezIndex][0];
-                        validityDuration += currentFreezStart - currentStart;
-                        pointArr[currentFreezIndex].push(currentFreezStart);
-                        if ((parseInt(currentFreezIndex) + 1) < freeze_ends.length) {
-                            pointArr.push([currentFreezEnd]);
+                        const currentStart = pointArr[currentFrozIndex][0];
+                        validityDuration += currentFreezeStart - currentStart;
+                        pointArr[currentFrozIndex].push(currentFreezeStart);
+                        if ((parseInt(currentFrozIndex) + 1) < freeze_ends.length) {
+                            pointArr.push([currentFreezeEnd]);
                         }
 
                         for (let checkLastIndex = 0; checkLastIndex < videoResponse.videos.length; checkLastIndex++) {
                             currentCheckSync = true;
-                            const lastUrlCurrentStart = videoResponse.videos[checkLastIndex].valid_periods[parseInt(currentFreezIndex)][0];
-                            const lastUrlCurrentFreezStart = videoResponse.videos[checkLastIndex].valid_periods[parseInt(currentFreezIndex)][1];
+                            const lastUrlCurrentStart = videoResponse.videos[checkLastIndex].valid_periods[parseInt(currentFrozIndex)][0];
+                            const lastUrlCurrentFreezeStart = videoResponse.videos[checkLastIndex].valid_periods[parseInt(currentFrozIndex)][1];
                             if (!(lastUrlCurrentStart !== undefined  && this.isSync(currentStart, lastUrlCurrentStart))) {
                                 currentCheckSync = false;
                             }
 
-                            if (!(lastUrlCurrentFreezStart !== undefined && this.isSync(currentFreezStart, lastUrlCurrentFreezStart))) {
+                            if (!(lastUrlCurrentFreezeStart !== undefined && this.isSync(currentFreezeStart, lastUrlCurrentFreezeStart))) {
                                 currentCheckSync = false;
                             }
                         }
                     }
 
                     const videoObj: video = {
-                        longest_valid_period: longestPeriodFreezed,
+                        longest_valid_period: longestPeriodFroze,
                         valid_periods: pointArr,
                         valid_video_percentage: (validityDuration / videoTotalDurationSeconds) * 100
                     }
@@ -134,52 +134,6 @@ export class VideoServiceImpl implements VideoService {
         return fileName;
     }
 
-    public async parseVideoSync(): Promise<VideoResponseDto> {
-        const res: VideoResponseDto = {
-            "all_videos_freeze_frame_synced": true,
-            "videos": [
-                {
-                    "longest_valid_period": 7.35,
-                    "valid_video_percentage": 56.00,
-                    "valid_periods": [
-                        [
-                            0.00,
-                            3.50
-                        ],
-                        [
-                            6.65,
-                            14
-                        ],
-                        [
-                            19.71,
-                            20.14
-                        ]
-                    ]
-                },
-                {
-                    "longest_valid_period": 7.33,
-                    "valid_video_percentage": 55.10,
-                    "valid_periods": [
-                        [
-                            0.00,
-                            3.40
-                        ],
-                        [
-                            6.65,
-                            13.98
-                        ],
-                        [
-                            19.71,
-                            20.00
-                        ]
-                    ]
-                }
-            ]
-        }
-
-
-        return res;
-    }
 
 
     public getValuesBetweenTexts(text: string, firstText: string, secondString: string): string[] {
