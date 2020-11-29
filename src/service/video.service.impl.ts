@@ -37,7 +37,6 @@ export class VideoServiceImpl implements VideoService {
                 const fileName = this.fileNameFromUrl(url);
                 try {
                     writeFileSync(`/tmp/${fileName}`, buffer);
-
                     ffmpeg.runSync(`-i /tmp/${fileName} -vf "freezedetect=n=0.003:d=2,metadata=mode=print:file=/tmp/${fileName.split('.')[0]}-metadata.txt" -map 0:v:0 -f null -`);
                     ffmpeg.runSync(`-i /tmp/${fileName} 2>&1 | grep "Duration" > /tmp/${fileName.split('.')[0]}-duration.txt`);
 
@@ -60,7 +59,7 @@ export class VideoServiceImpl implements VideoService {
                     let longestPeriodFreezed = 0;
                     const pointArr = [[0]];
                     let validityDuration = 0;
-                    let invalidityDuration = 0;
+                    
                     let currentCheckSync = true;
                     for (const currentFreezIndex in freeze_starts) {
 
@@ -73,10 +72,8 @@ export class VideoServiceImpl implements VideoService {
                             longestPeriodFreezed = currentFreezeDuration;
                         }
 
-
                         const currentStart = pointArr[currentFreezIndex][0];
                         validityDuration += currentFreezStart - currentStart;
-                        invalidityDuration += currentFreezeDuration;
                         pointArr[currentFreezIndex].push(currentFreezStart);
                         if ((parseInt(currentFreezIndex) + 1) < freeze_ends.length) {
                             pointArr.push([currentFreezEnd]);
