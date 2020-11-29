@@ -10,7 +10,7 @@ import {VideoResponseDto} from "../models/dto/video.response.dto";
 
 
 @ApiPath({ path: "/video", name: "video" })
-@controller("/video", TYPES.LoggerMiddleware)
+@controller("/video")
 export class VideoController implements interfaces.Controller {
     @injectHttpContext private readonly _httpContext: interfaces.HttpContext;
     @inject(TYPES.VideoService) private readonly videoService: VideoService;
