@@ -11,8 +11,6 @@
 * typeorm for the entity
 * db is as json
 * The connection is secured with free\self-signed certificate you can see it at app.ts
-* The server is validate the client's JWT so every requests will be with a authorization token in the header
-
 
 ###### **  I Added a swagger 
 you can see it at url `https://localhost:3000/api-docs/swagger`
